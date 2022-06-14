@@ -1,0 +1,246 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+<div class="container-login">
+    <div class="line1">
+        <h2>LOGIN</h2>
+    </div>
+    <div class="line2">
+        <form method="POST" action="">
+            {% csrf_token %}
+            
+            <div class="email">
+                <label for="">Username:</label>
+                <input type="text" name="username" placeholder="Enter Username">
+            </div>
+            <div class="password">
+                <label for="">Password:</label>
+                <input type="password" name="password" placeholder="Enter password">
+            </div>
+            <div class="login-submit">
+                <input type="submit" value="Login">
+            </div>
+            
+    
+        </form>
+    </div>
+    <div class="line3">
+        <div class="last">
+            <p>Haven't sign up yet?</p>
+            <a href="{% url 'register' %}">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="signup">
+    <div class="content">
+        <div class="line1">
+            <h2>Sign up</h2>
+        </div>
+        <div class="line2">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="sign-up-form">
+                    {{form.as_p}}
+                </div>
+                <div class="signup-input">
+                    <input type="submit" value="Register">
+                </div>
+               
+        
+            </form>
+        </div>
+        <div class="balik">
+            <p>allready sign up yet?</p>
+            <a href="{% url 'login' %}">login</a>
+        </div>
+    </div>
+
+    
+</div>
+
+{% endif %}
+
+
+<style>
+    .messages{
+        color: white;
+        padding-left: 70px;
+    }
+    .messages li{
+        list-style: none;
+    }
+
+    .container-login{
+        max-width: 470px;
+        min-width: 400px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;   
+    }
+    .container-login .line1{
+        background-color: #5a5d82;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .container-login .line1 h2{
+        color: white;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+    .container-login .line2{
+        background-color: #3F4156;
+        justify-content: center;
+        display: flex;
+        padding-top: 20px;
+    }
+    .container-login .line2 .email,
+    .container-login .line2 .password{
+        margin-top: 10px;
+        width: 320px;
+    }
+    .container-login .line2 .email input,
+    .container-login .line2 .password input{
+        width: 300px;
+        padding: 10px 5px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 10px;
+    }
+    .container-login .line2 label{
+        color: #738086;
+        font-size: 17px;
+    }
+    .container-login .line2 .login-submit{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .container-login .line2 .login-submit input{
+        padding: 14px 40px;
+        border-radius: 5px;
+        border: none;
+        background-color: #6CB8CF;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .container-login .line2 .login-submit input:hover{
+        background-color: #29829d;
+    }
+    .container-login .line3{
+        background-color: #3F4156;
+        justify-content: center;
+        display: flex;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        text-align: center;
+    }
+    .container-login .line3 .last p{
+        color: rgb(198, 198, 198);
+        margin-bottom: 10px;
+    }
+    .container-login .line3 .last a{
+        color: #6CB8CF;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    .container-login .line3 .last a:hover{
+        color: #439db9;
+    }
+
+
+
+    /***************************************/
+    .signup{
+        max-width: 470px;
+        min-width: 400px;
+        margin-left: 50%;
+        transform: translateX(-50%); 
+    }
+    .signup .content{
+        border-radius: 10px;
+        background-color: #3F4156;
+    }
+    .signup li{
+        display: none;
+    }
+    .signup span{
+        display: none;
+    }
+    .signup .content .line1{
+        display: flex;
+        justify-content: center;
+        padding: 15px 0;
+    }
+    .signup .content .line1 h2{
+        color: white;
+    }
+
+    .sign-up-form{
+
+        text-align: center;
+        
+    }
+    .sign-up-form label{
+        color: #738086;
+        font-size: 17px;  
+        
+    }
+    .sign-up-form input{
+        outline: none;
+        width: 300px;
+        padding: 10px 5px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 10px;
+    }
+    
+    .signup .content .line2 .signup-input{
+        text-align: center;
+        margin: 15px 0;
+    }
+    .signup .content .line2 .signup-input input{
+        padding: 14px 40px;
+        border-radius: 5px;
+        border: none;
+        background-color: #6CB8CF;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+
+    .signup .content .balik{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .signup .content .balik p{
+        color: rgb(198, 198, 198);
+        padding-bottom: 13px;
+    }
+    .signup .content .balik a{
+        color: #6CB8CF;
+        text-decoration: none;
+        font-size: 18px;
+       
+    }
+    .signup .content .balik a:hover{
+        color: #439db9;
+    }
+    #id_password1{
+        margin-bottom: 20px;
+    }
+
+
+</style>
+
+{% endblock content %}

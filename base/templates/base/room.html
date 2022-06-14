@@ -1,0 +1,159 @@
+{% extends 'main.html' %}
+
+ {% block content %}
+ 
+
+ <div class="room-container">
+    <div class="content">
+        <div class="line1">
+            <a href="{% url 'home' %}"><</a>
+            <h1>{{room.name}}</h1>
+        </div>
+        <div class="line2">
+            <h1>{{room.name}}</h1>
+            <div class="details">
+                <p>{{room.desription}}</p>
+            </div>
+        </div>
+        <div class="line3">
+            <div class="comment-wrapper">
+                <div class="border">
+                    {% for i in messages_room %}
+                    <div class="message-content">
+                       
+                        {% if request.user == message.user %}
+                        <a href="{% url 'delete-message' i.id %}">Delete</a>
+                        {% endif %}
+                        <small>@{{i.user}} <span>{{i.create|timesince}} ago</span></small>
+                        <p>{{i.body}}</p>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+                
+    
+            </div>
+           
+        </div>
+    </div>
+    <div class="comment-submit">
+        {% if request.user.is_authenticated %}
+        <div class="comment-form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input type="text" name="body" placeholder="Comment here">
+            </form>
+        </div>
+        {% endif %} 
+    </div>
+       
+    
+    
+
+</div>
+
+<style>
+    .room-container{
+       
+        padding: 10px 70px;
+        
+    } 
+    .room-container .content{
+        background-color: #3F4156;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    
+    .room-container h1{
+        color: white;
+        font-size: 20px;
+    }
+    .room-container .line1{
+        display: flex;
+        background-color: #696D97;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding-left: 20px;
+        align-items: center;
+    }
+    .room-container .line1 a{
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bolder;
+        padding: 10px 0;
+        margin-right: 10px;
+    }
+    .room-container .line1 a:hover{
+        color: rgb(181, 181, 181);
+    }
+    .room-container .line2 h1{
+        padding: 20px 20px;
+        font-size: 30px;
+        margin-left: 20px;
+        color: #71C6DD;
+    }
+    .room-container .details{
+        margin-top: 20px;
+        padding: 10px 20px;
+    }
+    .room-container .details p{
+        color: rgb(209, 209, 209);
+        font-size: 18px;
+    }
+
+    .room-container .line3{
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    .room-container .line3 .comment-wrapper{
+        padding: 10px 20px;
+        
+
+    }
+    .room-container .line3 .comment-wrapper h3{
+        color: white;
+    }
+    .room-container .line3 .comment-wrapper .message-content{
+        background-color: #2D2D39;
+        padding: 10px 20px;
+        
+    }
+    .room-container .line3 .comment-wrapper .message-content small,
+    .room-container .line3 .comment-wrapper .message-content p{
+        color: white;
+    }
+    .room-container .line3 .comment-wrapper .message-content p{
+        padding-top: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid white;
+    }
+    .room-container .line3 .comment-wrapper .message-content small{
+        color: #71C6DD;
+        font-size: 17px;
+        padding-bottom: 10px;
+    }
+    .room-container .line3 .comment-wrapper .message-content small span{
+        color: #A5BDBD;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
+    .comment-submit{
+        background-color: #3F4156;
+        padding: 10px 30px;
+
+    }
+    .comment-submit input{
+        padding: 10px;
+        width: 250px;
+    }
+    
+    
+    
+
+</style>
+
+ {% endblock content %}
+ 

@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="delete-container">
+    <div class="content">
+        <form method="POST" action="">
+
+            {% csrf_token %}
+            <p>are you sure you want to delete</p>
+            <p><span>"{{obj}}"</span></p>
+            <div class="enter">
+                <a href="{% url 'home' %}">Back</a>
+                <input type="submit" name="" id="" value="Deleted" >
+            </div>
+            
+        
+        
+        </form>
+    </div>
+</div>
+
+<style>
+    .delete-container{
+        justify-content: center;
+        display: flex;
+    }
+    .delete-container .content{
+        width: 400px;
+        background-color: #3F4156;
+        text-align: center;
+        height: 130px;
+        padding-top: 30px;
+        border-radius: 10px;
+    }
+    .delete-container .content p{
+        color: white;
+        
+        font-size: 18px;
+    }
+    .delete-container .content span{
+        color: #71C6C3;
+        font-size: 20px;
+    }
+    .enter{
+        margin-top: 10px;
+    }
+    .delete-container a,
+    .delete-container input{
+        cursor: pointer;
+        background-color: #6CB8CF;
+        text-decoration: none;
+        color: rgb(74, 74, 74);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+
+    }
+    .delete-container a{
+        margin-top: 1px;
+        padding: 10px 28px;
+    }
+    .delete-container input{
+        font-size: 15px;
+    }
+    
+</style>
+
+{% endblock content %}

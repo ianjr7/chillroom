@@ -1,0 +1,146 @@
+
+<div class="continer-navar">
+    <div class="content">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><h1>Perficient Books</h1></a>
+            </div>
+            <div class="search">
+                <form method="GET" action="">
+                
+                    <input type="text" name="q" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+        <div class="right_right">
+            <div class= "about_us">
+                <a href="{% url 'about-us' %}">About us</a>
+            </div>
+                
+            <div class="right">
+                <div class="loggg">
+                    {% if request.user.is_authenticated %}
+                    <p>Hello {{request.user}}</p>
+                    <a class="logt" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a class="log" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .continer-navar{
+        
+        background-color: #3F4156;
+        margin-bottom: 10px;
+        
+        
+    }
+    .continer-navar .content{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 70px;
+        align-items: center;
+
+    }
+    .right_right{
+        display: flex;
+        align-items: center;
+    }
+    .continer-navar .content .logo h1{
+        color: #71C6DD;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .continer-navar .content .logo a{
+        text-decoration: none;
+    }
+    .continer-navar .content .left{
+        display: flex;
+        align-items: center;
+    }
+    .continer-navar .content .left .search{
+        margin-left: 30px;
+    }
+    .continer-navar .content .left .search input{
+        width: 300px;
+        padding: 10px 10px;
+        outline: none;
+        background-color: #51546E;
+        border: none;
+        border-radius: 10px;
+        color: white;
+    }
+    .right{
+        display: flex;
+        text-align: center;
+    }
+    .right a{
+        color: rgb(189, 189, 189);
+        text-decoration: none;
+
+    }
+    .about_us{
+        margin-right: 30px;
+    }
+    .about_us a{
+        color: rgb(189, 189, 189);
+        text-decoration: none;
+        right: 100px;
+        
+       
+    }
+    .right p{
+        color: white;
+        font-size: 20px;
+    }
+
+    @media (max-width:900px) {
+        .continer-navar .content{  
+        padding: 10px 50px;
+        }
+        .continer-navar .content .logo h1{
+            font-size: 17px;
+        }
+        .continer-navar .content .left .search input{
+        width: 200px;
+        padding: 7px 10px;
+       
+        }
+        .right a{
+        color: rgb(189, 189, 189);
+        text-decoration: none;
+
+        }
+        .right p{
+        color: white;
+        font-size: 18px;
+        }   
+        
+    }
+    @media (max-width:700px) {
+        .continer-navar .content{  
+        padding: 10px 40px;
+        }
+        .continer-navar .content .left .search{
+            display: none;
+        }
+        
+    }
+    
+    
+    
+
+
+</style>
+

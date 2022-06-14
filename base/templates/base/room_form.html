@@ -1,0 +1,101 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="containerr">
+    <div class="content-form">
+        <h1>Create Room</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="center">
+                {{form.as_p}}
+            </div>
+           
+            
+            <div class="submit-form">
+                <div class="move">
+                    <input type="submit" value="Submit">
+                </div>
+                
+            </div>
+            
+        </form>
+    </div>
+   
+</div>
+
+
+
+<style>
+    .content-form h1{
+        color: white;
+        padding-bottom: 30px;
+    }
+    .submit-form{
+        position: relative;
+        margin-top: 10px;
+        
+    }
+    .submit-form .move{
+        position: absolute;
+        margin-top: -30px;
+    }
+    .submit-form input{
+        padding: 10px 40px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        background-color: #71C6DD;
+    }
+    .submit-form input:hover{
+        background-color: #558f9f;
+    }
+    .containerr{
+        display: flex;
+        justify-content: center;
+    }
+    .content-form{
+        border-radius: 10px;
+        background-color: #3F4156;
+        padding: 20px 70px;
+        max-width: 400px;
+        padding-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+        
+
+    }
+    .content-form label{
+        color: white;
+        padding-right: 1000px;
+    
+    }
+    .content-form select{
+        width: 220px; 
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .content-form input{
+        width: 200px;
+        padding: 5px 10px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .center textarea{
+        width: 400px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        padding: 5px 10px;
+    }
+    #id_participants{
+        display: none;
+    }
+    
+
+</style>
+
+{% endblock %}
